@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, Response, render_template
 import json
 import os
 
@@ -22,10 +22,20 @@ def index():
     minDate = min(dates)
     maxDate = max(dates)
 
-    return render_template("index.html", head=data[:10], minDate=minDate, maxDate=maxDate, length=len(data))
+    size = os.path.getsize(tagesschauDatabase)
+
+    return render_template("index.html", head=data[:10], minDate=minDate, size=size, maxDate=maxDate, length=len(data))
 
 
-app.run(debug=True)
+@app.route('/database.json', methods=['GET'])
+def sendFile():
+    tagesschauDatabase = os.path.expanduser(
+        '~/data/tagesschau-data-fetching/database.json')
+
+    content = open(tagesschauDatabase)
+    return Response(content,
+                    mimetype='application/json',
+                    headers={'Content-Disposition': 'attachment;filename=database.json'})
 
 
 @app.template_filter('formatdatetime')

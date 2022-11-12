@@ -18,11 +18,18 @@
         Anzahl Artikel
         <h3>{{ length }}</h3>
 
+        Datenmenge
+        <h3>{{ size / 1000000 }} MB</h3>
+
         Zeitraum
         <h3>{{ minDate|formatdatetime('%d.%m.%Y') }} bis {{ maxDate|formatdatetime('%d.%m.%Y') }}</h3>
 
         Letzter Download
         <h3>{{ maxDate|formatdatetime('%d.%m.%Y %H:%M') }}</h3>
+
+        <a class="btn btn-primary" href="/database.json" role="button">Download <code>database.json</code></a>
+
+        <h4 class="mt-5">Beispieldaten</h4>
 
         <div class="accordion mt-4" id="accordionExample">
             {%for article in head%}
