@@ -9,8 +9,8 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
-    tagesschauDatabase = os.path.expanduser(
-        '~/data/tagesschau-data-fetching/database.json')
+    tagesschauDatabase = os.path.abspath(
+        'data/tagesschau-data-fetching/database.json')
 
     f = open(tagesschauDatabase)
 
@@ -29,8 +29,8 @@ def index():
 
 @app.route('/database.json', methods=['GET'])
 def sendFile():
-    tagesschauDatabase = os.path.expanduser(
-        '~/data/tagesschau-data-fetching/database.json')
+    tagesschauDatabase = os.path.abspath(
+        'data/tagesschau-data-fetching/database.json')
 
     content = open(tagesschauDatabase)
     return Response(content,

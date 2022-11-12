@@ -5,10 +5,10 @@
 flask --debug run --host=0.0.0.0
 
 # build image
-docker build -t Tagesschau-realtime-analysis-tool .
+docker build -t tagesschau-realtime-analysis-tool .
 
 # run container
-docker run -d --name Tagesschau-realtime-analysis-tool-container -p 1161:5000 Tagesschau-realtime-analysis-tool
+docker run -d -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching --name Tagesschau-realtime-analysis-tool-container -p 1161:5000 Tagesschau-realtime-analysis-tool
 ```
 
 ### nginx
