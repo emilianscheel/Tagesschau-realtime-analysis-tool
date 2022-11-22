@@ -1,4 +1,4 @@
-FROM python:alpine3.16
+FROM python
 
 LABEL Author="Emilian Scheel"
 LABEL E-mail="emilian-scheel@t-online.de"

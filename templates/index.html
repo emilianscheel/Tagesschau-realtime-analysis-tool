@@ -8,78 +8,122 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 </head>
 
 <body>
     <div class="container">
         <h1 class="mt-5">Tagesschau Realtime Analysis Tool</h1>
 
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Übersicht</button>
+                <button class="nav-link" id="nav-diagram-tab" data-bs-toggle="tab" data-bs-target="#nav-diagram"
+                    type="button" role="tab" aria-controls="nav-diagram" aria-selected="false">Diagramme</button>
+            </div>
+        </nav>
 
-        Anzahl Artikel
-        <h3>{{ length }}</h3>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active mt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                Anzahl Artikel
+                <h3>{{ length }}</h3>
 
-        Datenmenge
-        <h3>{{ size / 1000000 }} MB</h3>
+                Datenmenge
+                <h3>{{ size / 1000000 }} MB</h3>
 
-        Zeitraum
-        <h3>{{ minDate|formatdatetime('%d.%m.%Y') }} bis {{ maxDate|formatdatetime('%d.%m.%Y') }}</h3>
+                Zeitraum
+                <h3>{{ minDate|formatdatetime('%d.%m.%Y') }} bis {{ maxDate|formatdatetime('%d.%m.%Y') }}</h3>
 
-        Letzter Download
-        <h3>{{ maxDate|formatdatetime('%d.%m.%Y %H:%M') }}</h3>
+                Letzter Download
+                <h3>{{ maxDate|formatdatetime('%d.%m.%Y %H:%M') }}</h3>
 
-        <a class="btn btn-primary" href="/database.json" role="button">Download <code>database.json</code></a>
+                Webseite
+                <a href="https://tagesschau.de" target="_blank">
+                    <h3>Tagesschau.de</h3>
+                </a>
 
-        <h4 class="mt-5">Beispieldaten</h4>
+                <a class="btn btn-primary mt-5" href="/database.json" role="button">Download
+                    <code>database.json</code></a>
 
-        <div class="accordion mt-4" id="accordionExample">
-            {%for article in head%}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading-{{ article['sophoraId'] }}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse-{{ article['sophoraId'] }}" aria-expanded="false"
-                        aria-controls="collapse-{{ article['sophoraId'] }}">
-                        {{ article['title'] }}
-                    </button>
-                </h2>
-                <div id="collapse-{{ article['sophoraId'] }}" class="accordion-collapse collapse"
-                    aria-labelledby="#heading-{{ article['sophoraId'] }}" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-striped overflow-scroll">
-                            <tbody>
-                                {%for key in article.keys()%}
-                                <tr>
-                                    <th scope="col">{{ key }}</th>
-                                    <td>{{article[key][:100] + '...' if article[key] is string else article[key]}}</td>
-                                </tr>
-                                {%endfor%}
-                            </tbody>
-                        </table>
+                <h4 class="mt-5">Beispieldaten (Letzten 10 Einträge)</h4>
+
+                <div class="accordion mt-4" id="accordion-last">
+                    {%for article in last%}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{ article['sophoraId'] }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse-{{ article['sophoraId'] }}" aria-expanded="false"
+                                aria-controls="collapse-{{ article['sophoraId'] }}">
+                                {{ article['title'] }}
+                            </button>
+                        </h2>
+                        <div id="collapse-{{ article['sophoraId'] }}" class="accordion-collapse collapse"
+                            aria-labelledby="#heading-{{ article['sophoraId'] }}" data-bs-parent="#accordion-last">
+                            <div class="accordion-body">
+                                <table class="table table-striped overflow-scroll">
+                                    <tbody>
+                                        {%for key in article.keys()%}
+                                        <tr>
+                                            <th scope="col">{{ key }}</th>
+                                            <td>{{article[key][:100] + '...' if article[key] is string else
+                                                article[key]}}</td>
+                                        </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
+                    {%endfor%}
+                </div>
+
+                <h4 class="mt-5">Beispieldaten (Ersten 10 Einträge)</h4>
+
+                <div class="accordion mt-4 mb-5" id="accordion-head">
+                    {%for article in head%}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{ article['sophoraId'] }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse-{{ article['sophoraId'] }}" aria-expanded="false"
+                                aria-controls="collapse-{{ article['sophoraId'] }}">
+                                {{ article['title'] }}
+                            </button>
+                        </h2>
+                        <div id="collapse-{{ article['sophoraId'] }}" class="accordion-collapse collapse"
+                            aria-labelledby="#heading-{{ article['sophoraId'] }}" data-bs-parent="#accordion-head">
+                            <div class="accordion-body">
+                                <table class="table table-striped overflow-scroll">
+                                    <tbody>
+                                        {%for key in article.keys()%}
+                                        <tr>
+                                            <th scope="col">{{ key }}</th>
+                                            <td>{{article[key][:100] + '...' if article[key] is string else
+                                                article[key]}}</td>
+                                        </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
                 </div>
             </div>
-            {%endfor%}
-        </div>
+            <div class="tab-pane fade" id="nav-diagram" role="tabpanel" aria-labelledby="nav-diagram-tab">
+                <div id='chart-bar-ressort' class='chart-1'></div>
+                <script type='text/javascript'>
+                    let barRessorts = {{ barRessortJSON | safe }};
+                    Plotly.plot('chart-bar-ressort', barRessorts, {});
+                </script>
 
-        <!--
-        <table class="table table-striped overflow-scroll">
-            <thead>
-                <tr>
-                    {%for key in head[0].keys()%}
-                    <th scope="col">{{key}}</th>
-                    {%endfor%}
-                </tr>
-            </thead>
-            <tbody>
-                {%for article in head%}
-                <tr>
-                    {%for key in article.keys()%}
-                    <td>{{article[key][:100] + '...' if article[key] is string else article[key]}}</td>
-                    {%endfor%}
-                </tr>
-                {%endfor%}
-            </tbody>
-        </table>
-        -->
+                <div id='chart-bar-day' class='chart-2'></div>
+                <script type='text/javascript'>
+                    let barDay = {{ barDayJSON | safe }};
+                    Plotly.plot('chart-bar-day', barDay, {});
+                </script>
+            </div>
+        </div>
     </div>
 
 

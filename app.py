@@ -1,9 +1,40 @@
-from datetime import datetime
-from flask import Flask, Response, render_template
 import json
 import os
+from datetime import datetime
+
+import pandas as pd
+import plotly
+import plotly.express as px
+from flask import Flask, Response, render_template
 
 app = Flask(__name__)
+
+
+def barRessortJSON(df):
+
+    df = (df['ressort'].value_counts()
+          .rename_axis('ressort')
+          .reset_index(name='amount'))
+
+    fig = px.bar(df, x='ressort', y='amount',
+                 barmode='group', width=800, height=400)
+
+    return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+
+def barDayJSON(df):
+
+    df = (pd.to_datetime(df['date'])
+          .dt.floor('d')
+          .value_counts()
+          .rename_axis('date')
+          .reset_index(name='count')
+          .sort_values('date'))
+
+    fig = px.bar(df, x='date', y='count',
+                 barmode='group', width=800, height=400)
+
+    return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,8 +54,12 @@ def index():
     maxDate = max(dates)
 
     size = os.path.getsize(tagesschauDatabase)
+    df = pd.read_json(tagesschauDatabase)
 
-    return render_template("index.html", head=data[:10], minDate=minDate, size=size, maxDate=maxDate, length=len(data))
+    df['date'] = pd.to_datetime(
+        df.date, format='%Y-%m-%dT%H:%M:%S.%f', utc=True)
+
+    return render_template("index.html", head=data[:10], last=data[-10:], barRessortJSON=barRessortJSON(df), barDayJSON=barDayJSON(df), minDate=minDate, size=size, maxDate=maxDate, length=len(data))
 
 
 @app.route('/database.json', methods=['GET'])
