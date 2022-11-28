@@ -1,17 +1,29 @@
 ## Tagesschau Realtime Analysis Tool (TRAT)
 
-```
+```sh
 # flask debug
 flask --debug run --host=0.0.0.0
 
 # build image
-docker build -t tagesschau-realtime-analysis-tool .
+docker build -t emilianscheel/tagesschau-realtime-analysis-tool:latest .
 
 # run container
 docker run -d -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching --name Tagesschau-realtime-analysis-tool-container -p 1161:5000 Tagesschau-realtime-analysis-tool
 ```
 
-### nginx
+### Rebuild production container
+
+```sh
+# 1. Stop container
+docker stop <container-id>
+
+# 2. Remove container
+docker rm <container-id>
+
+# 3. Restart container with the command above
+```
+
+### Nginx Configuration
 
 ```
 # nginx conf file 'Tagesschau-realtime-analysis-tool.conf'

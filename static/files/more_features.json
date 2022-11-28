@@ -1,0 +1,67 @@
+[
+  {
+    "feature": "year",
+    "description": "Jahr",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "month",
+    "description": "Monat",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "week",
+    "description": "Woche",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "day",
+    "description": "Tag",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "weekday",
+    "description": "Wochentag",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "hour",
+    "description": "Stunde",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "minute",
+    "description": "Minute",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "second",
+    "description": "Sekunde",
+    "basis_feature": "date"
+  },
+  {
+    "feature": "content_length",
+    "description": "Anzahl Zeichen von 'content'",
+    "basis_feature": "content"
+  },
+  {
+    "feature": "content_words",
+    "description": "Anzahl Wörter von 'content'",
+    "basis_feature": "content"
+  },
+  {
+    "feature": "average_ranking",
+    "description": "Durchschnittliches Ranking",
+    "basis_feature": "rankings"
+  },
+  {
+    "feature": "best_ranking",
+    "description": "Höchstes Ranking",
+    "basis_feature": "rankings"
+  },
+  {
+    "feature": "lowest_ranking",
+    "description": "Niedrigstes Ranking",
+    "basis_feature": "rankings"
+  }
+]

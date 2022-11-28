@@ -1,0 +1,66 @@
+[
+  {
+    "feature": "sophoraId",
+    "description": "Eindeutige Identifizierung des Artikels"
+  },
+  {
+    "feature": "title",
+    "description": "Titel des Artikels"
+  },
+  {
+    "feature": "content",
+    "description": "Inhalt des Artikels"
+  },
+  {
+    "feature": "date",
+    "description": "Datum (tagesschau.de)"
+  },
+  {
+    "feature": "firstDownload",
+    "description": "Datum, Uhrzeit des ersten Downloads"
+  },
+  {
+    "feature": "lastDownload",
+    "description": "Datum, Uhrzeit des letzten Downloads"
+  },
+  {
+    "feature": "author",
+    "description": "Autor"
+  },
+  {
+    "feature": "sender",
+    "description": "Sender des öffentlich rechtlichen Rundfunks"
+  },
+  {
+    "feature": "tags",
+    "description": "Liste der Schlagwörter, Kategorien"
+  },
+  {
+    "feature": "geotags",
+    "description": "Liste der Orte in dem Zusammenhang"
+  },
+  {
+    "feature": "ressort",
+    "description": "Nachrichten Ressort"
+  },
+  {
+    "feature": "breakingNews",
+    "description": "Ob es eine Eilmeldung ist oder nicht"
+  },
+  {
+    "feature": "category",
+    "description": "Hierarchische Kategorie"
+  },
+  {
+    "feature": "linkBoxes",
+    "description": "Liste mit verlinkten Artikeln zwischen den Textabsätzen"
+  },
+  {
+    "feature": "related",
+    "description": "Liste mit ähnlichen Artikeln; Aufgeführt am Ende eines Artikels"
+  },
+  {
+    "feature": "rankings",
+    "description": "Liste mit erfassten Rankings des Artikels; Zusätzlich mit Zeitstempel"
+  }
+]
