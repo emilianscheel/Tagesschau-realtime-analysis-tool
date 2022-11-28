@@ -8,7 +8,10 @@ flask --debug run --host=0.0.0.0
 docker build -t emilianscheel/tagesschau-realtime-analysis-tool:latest .
 
 # run container
-docker run -d -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching --name Tagesschau-realtime-analysis-tool-container -p 1161:5000 Tagesschau-realtime-analysis-tool
+docker run -d \
+  -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
+  --name Tagesschau-realtime-analysis-tool-container \
+  -p 1161:5000 tagesschau-realtime-analysis-tool:latest
 ```
 
 ### Rebuild production container
