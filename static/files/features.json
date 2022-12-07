@@ -1,39 +1,48 @@
 [
   {
     "feature": "sophoraId",
-    "description": "Eindeutige Identifizierung des Artikels"
+    "description": "Eindeutige Identifizierung des Artikels",
+    "example": "afd-chrupalla-sommerinterview-103"
   },
   {
     "feature": "title",
-    "description": "Titel des Artikels"
+    "description": "Titel des Artikels",
+    "example": "Es geht um deutsche Interessen"
   },
   {
     "feature": "content",
-    "description": "Inhalt des Artikels"
+    "description": "Inhalt des Artikels",
+    "example": "Die Bundesregierung sollte bei ihrer Reaktion auf den Ukraine-Krieg..."
   },
   {
     "feature": "date",
-    "description": "Datum (tagesschau.de)"
+    "description": "Datum (tagesschau.de)",
+    "example": "2022-07-17T17:44:46.830+02:00"
   },
   {
     "feature": "firstDownload",
-    "description": "Datum, Uhrzeit des ersten Downloads"
+    "description": "Datum, Uhrzeit des ersten Downloads",
+    "example": "18-07-2022--03-00-00"
   },
   {
     "feature": "lastDownload",
-    "description": "Datum, Uhrzeit des letzten Downloads"
+    "description": "Datum, Uhrzeit des letzten Downloads",
+    "example": "17-07-2022--20-25-00"
   },
   {
     "feature": "author",
-    "description": "Autor"
+    "description": "Autor",
+    "example": "z. B. Palina Milling"
   },
   {
     "feature": "sender",
-    "description": "Sender des öffentlich rechtlichen Rundfunks"
+    "description": "Sender des öffentlich rechtlichen Rundfunks",
+    "example": "z. B. WDR"
   },
   {
     "feature": "tags",
-    "description": "Liste der Schlagwörter, Kategorien"
+    "description": "Liste der Schlagwörter, Kategorien",
+    "example": "['Sommerinterview', 'Chrupalla', 'AfD']"
   },
   {
     "feature": "geotags",
@@ -41,26 +50,32 @@
   },
   {
     "feature": "ressort",
-    "description": "Nachrichten Ressort"
+    "description": "Nachrichten Ressort",
+    "example": "['Berlin']"
   },
   {
     "feature": "breakingNews",
-    "description": "Ob es eine Eilmeldung ist oder nicht"
+    "description": "Ob es eine Eilmeldung ist oder nicht",
+    "example": "Inland"
   },
   {
     "feature": "category",
-    "description": "Hierarchische Kategorie"
+    "description": "Hierarchische Kategorie",
+    "example": "inland/innenpolitik"
   },
   {
     "feature": "linkBoxes",
-    "description": "Liste mit verlinkten Artikeln zwischen den Textabsätzen"
+    "description": "Liste mit verlinkten Artikeln zwischen den Textabsätzen",
+    "example": "(2 Stück)"
   },
   {
     "feature": "related",
-    "description": "Liste mit ähnlichen Artikeln; Aufgeführt am Ende eines Artikels"
+    "description": "Liste mit ähnlichen Artikeln; Aufgeführt am Ende eines Artikels",
+    "example": "(6 Stück)"
   },
   {
     "feature": "rankings",
-    "description": "Liste mit erfassten Rankings des Artikels; Zusätzlich mit Zeitstempel"
+    "description": "Liste mit erfassten Rankings des Artikels; Zusätzlich mit Zeitstempel",
+    "example": "[{'timestamp': '07-12-2022--19-22-00', 'score': 1}, {'timestamp': '07-12-2022--19-33-00', 'score': 1}, {'timestamp': '07-12-2022--19-44-00', 'score': 1}, {'timestamp': '07-12-2022--19-55-00', 'score': 1}, {'timestamp': '07-12-2022--20-11-00', 'score': 1}]"
   }
 ]

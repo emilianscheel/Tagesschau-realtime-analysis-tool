@@ -123,9 +123,10 @@
 
                     <tbody>
                         {%for feature in features%}
-                        <tr>
+                        <tr class="column">
                             <th scope="col">{{ feature['feature'] }}</th>
-                            <td>{{feature['description']}}</td>
+                            <td class="col-sm-5">{{feature['description']}}</td>
+                            <td><code>{{feature['example']}}</code></td>
                         </tr>
                         {%endfor%}
                     </tbody>
