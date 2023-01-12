@@ -11,6 +11,7 @@ docker build -t emilianscheel/tagesschau-realtime-analysis-tool:latest .
 docker run -d \
   -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
   --name Tagesschau-realtime-analysis-tool-container \
+  --restart=always \
   -p 1161:5000 tagesschau-realtime-analysis-tool:latest
 ```
 
