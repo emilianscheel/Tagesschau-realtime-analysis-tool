@@ -8,3 +8,4 @@ Werkzeug==1.0.0
 pandas==1.5.1
 plotly==5.11.0
 numpy==1.23.5
+scipy==1.10.0
