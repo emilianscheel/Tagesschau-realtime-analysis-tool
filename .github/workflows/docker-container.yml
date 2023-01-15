@@ -31,7 +31,8 @@ jobs:
       
     - name: Run the Docker container
       if: always()
-      run: docker run -d \
+      run: |
+        docker run -d \
             -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
             --name $DOCKER_CONTAINER_NAME \
             --restart=always \
