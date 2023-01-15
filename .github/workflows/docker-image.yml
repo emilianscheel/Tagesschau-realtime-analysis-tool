@@ -1,0 +1,30 @@
+name: Docker Container CI
+
+on:
+  push:
+    branches: [ "deploy" ]
+
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+    environment: Developing
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build -t emilianscheel/tagesschau-realtime-analysis-tool:latest .
+      
+    - name: Stop current Docker container
+      run: docker stop Tagesschau-realtime-analysis-tool-container
+    
+    - name: Remove current Docker container
+      run: docker rm Tagesschau-realtime-analysis-tool-container
+      
+    - name: Run the Docker container
+      run: docker run -d \
+            -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
+            --name Tagesschau-realtime-analysis-tool-container \
+            --restart=always \
+            -p 1161:5000 tagesschau-realtime-analysis-tool:latest
