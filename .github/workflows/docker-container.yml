@@ -23,10 +23,15 @@ jobs:
     - name: Build the Docker image
       run: docker build -t $DOCKER_IMAGE_NAME .
       
+    - name: Check if Docker container exists
+      run: $(docker ps -a | grep <name>)
+      
     - name: Stop current Docker container
+      continue-on-error: true
       run:  docker stop $DOCKER_CONTAINER_NAME
     
     - name: Remove current Docker container
+      continue-on-error: true
       run: docker rm $DOCKER_CONTAINER_NAME
       
     - name: Run the Docker container
