@@ -2,7 +2,8 @@ name: Docker Container CI
 
 on:
   push:
-    branches: [ "deploy" ]
+    tags:
+      - deploy
 
 jobs:
 
