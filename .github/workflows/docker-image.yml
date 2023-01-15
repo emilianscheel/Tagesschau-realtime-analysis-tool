@@ -30,4 +30,4 @@ jobs:
             -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
             --name Tagesschau-realtime-analysis-tool-container \
             --restart=always \
-            -p 1161:5000 tagesschau-realtime-analysis-tool:latest
+            -p 1161:5000 emilianscheel/tagesschau-realtime-analysis-tool:latest
