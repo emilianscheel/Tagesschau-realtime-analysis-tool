@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - deploy
+  workflow_dispatch:
+    
 
 jobs:
 
