@@ -40,6 +40,6 @@ jobs:
             -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
             --name $DOCKER_CONTAINER_NAME \
             --restart=always \
-            -e COMMIT_MESSAGE=${{ github.event.head_commit.message }} \
-            -e VERSION=${{ github.event.ref }} \
+            -e COMMIT_MESSAGE="${{ github.event.head_commit.message }}" \
+            -e VERSION="${{ github.event.ref }}" \
             -p 1161:5000 $DOCKER_IMAGE_NAME
