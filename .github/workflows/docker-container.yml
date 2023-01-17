@@ -41,6 +41,5 @@ jobs:
             --name $DOCKER_CONTAINER_NAME \
             --restart=always \
             -e COMMIT_MESSAGE=${{ github.event.head_commit.message }} \
-            -e COMMIT_HASH=${{ github.event.head_commit.hash }} \
-            -e VERSION=${{ github.event.release.tag_name }} \
+            -e VERSION=${{ github.event.ref }} \
             -p 1161:5000 $DOCKER_IMAGE_NAME
