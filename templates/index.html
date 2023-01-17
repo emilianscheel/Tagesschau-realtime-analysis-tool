@@ -230,6 +230,10 @@
 
                     window.dispatchEvent(new Event('resize'));
 
+                    window.addEventListener('resize', function () {
+                        Plotly.Plots.resize();
+                    })
+
                     let api_endpoints = {
                         "chart-1": "Artikel-Ressort",
                         "chart-2": "Artikel-Tag",

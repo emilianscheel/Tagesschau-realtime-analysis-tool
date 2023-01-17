@@ -32,7 +32,7 @@ def chart97():
     df['date'] = pd.to_datetime(df['date'], utc=True)
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Fülle alle NaN Werte aus `rankings` mit einem leeren Array
     df['rankings'] = df['rankings'].fillna("[]")
@@ -89,7 +89,7 @@ def chart98():
     df['date'] = pd.to_datetime(df['date'], utc=True)
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge ein neues Feature hinzu: Themengebiet
     topics = json.loads(open("data-topics/topics.json", "r").read())
@@ -144,7 +144,7 @@ def chart99():
     df['date'] = pd.to_datetime(df['date'], utc=True)
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge ein neues Feature hinzu: Stichwort
     keywords = json.loads(open("data-keywords/keywords.json", "r").read())
@@ -184,7 +184,7 @@ def chart100():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge ein neues Feature hinzu: Themengebiet
     topics = json.loads(open("data-topics/topics.json", "r").read())

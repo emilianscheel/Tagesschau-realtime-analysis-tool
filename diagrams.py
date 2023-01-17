@@ -27,7 +27,7 @@ def chart9():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     df['date'] = pd.to_datetime(df['date'], utc=True)
 
@@ -137,7 +137,7 @@ def chart7():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Fülle alle NaN Werte aus `rankings` mit einem leeren Array
     df['rankings'] = df['rankings'].fillna("[]")
@@ -179,7 +179,7 @@ def chart6():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge ein neues Feature hinzu: Themengebiet
     topics = json.loads(open("data-topics/topics.json", "r").read())
@@ -233,7 +233,7 @@ def chart5():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge ein neues Feature hinzu: Themengebiet
     topics = json.loads(open("data-topics/topics.json", "r").read())
@@ -261,7 +261,7 @@ def chart4():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge zwei neue Features hinzu: Anzahl Wörter, Anzahl Zeichen
     df['content_length'] = df['content'].str.len()
@@ -301,7 +301,7 @@ def chart1():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Ändere die Spalte `ressort` zu einem Anfangsgroßbuchstaben
     df.ressort = df.ressort.str.title()
@@ -329,7 +329,7 @@ def chart2():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     df = (pd.to_datetime(df['date'])
           .dt.floor('d')
@@ -353,7 +353,7 @@ def chart3():
     df = getDataframe()
 
     # Filter die Artikel nach: Sind zwischen dem und dem Datum veröffentlich worden.
-    df = df.loc[(df['date'] >= date_begin) & (df['date'] <= date_end)]
+    df = df.loc[(df['date'] >= date_begin)]
 
     # Füge ein neues Feature hinzu: Anzahl Wörter, Anzahl Zeichen
     df['content_length'] = df['content'].str.len()

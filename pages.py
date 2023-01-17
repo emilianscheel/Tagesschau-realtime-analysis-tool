@@ -10,6 +10,8 @@ from lib import *
 
 pages = Blueprint('pages', __name__)
 
+version = os.environ['VERSION']
+
 
 @pages.route('/', methods=['GET', 'POST'])
 def index():
@@ -51,7 +53,7 @@ def index():
         "chart-97": "Verlauf-Ranking-Thema"
     }
 
-    return render_template("index.html", head=data[:10], last=data[-10:], version=getConfig("version"), minDate=minDate, line_diagrams=line_diagrams, diagrams=diagrams, size=size, maxDate=maxDate, features=features, more_features=more_features, length=len(data))
+    return render_template("index.html", head=data[:10], last=data[-10:], version=version, minDate=minDate, line_diagrams=line_diagrams, diagrams=diagrams, size=size, maxDate=maxDate, features=features, more_features=more_features, length=len(data))
 
 
 @pages.route('/database.json', methods=['GET'])
