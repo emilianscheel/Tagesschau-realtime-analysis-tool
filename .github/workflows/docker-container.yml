@@ -42,4 +42,5 @@ jobs:
             --restart=always \
             -e COMMIT_MESSAGE="${{ github.event.head_commit.message }}" \
             -e VERSION="${{ github.event.ref }}" \
+            -e ENV=production \
             -p 1161:5000 $DOCKER_IMAGE_NAME
