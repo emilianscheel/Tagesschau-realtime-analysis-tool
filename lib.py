@@ -8,7 +8,7 @@ CONFIG = ConfigParser()
 files = CONFIG.read('config.ini')
 
 
-ENV = 'dev'
+ENV = os.environ['ENV']
 
 
 def getConfig(config_name: str) -> str:

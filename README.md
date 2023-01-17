@@ -2,7 +2,7 @@
 
 ```sh
 # flask debug
-VERSION=dev flask --debug run --host=0.0.0.0
+VERSION=dev ENV=dev flask --debug run --host=0.0.0.0
 
 # build image
 docker build -t emilianscheel/tagesschau-realtime-analysis-tool:latest .
@@ -12,7 +12,9 @@ docker run -d \
   -v ~/apps/tagesschau-data-fetching/data:/code/data/tagesschau-data-fetching \
   --name Tagesschau-realtime-analysis-tool-container \
   --restart=always \
+  -e COMMIT_MESSAGE="${{ github.event.head_commit.message }}" \
   -e VERSION=latest
+  -e ENV=production
   -p 1161:5000 emilianscheel/tagesschau-realtime-analysis-tool:latest
 ```
 
